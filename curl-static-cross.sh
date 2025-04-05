@@ -469,7 +469,7 @@ compile_zlib() {
     url="${URL}"
     download_and_extract "${url}"
 
-    ./configure --prefix="${PREFIX}" --static;
+    ./configure --prefix="${PREFIX}" ;
     make -j "$(nproc)";
     make install;
 
@@ -502,8 +502,8 @@ compile_libidn2() {
     url="https://mirrors.kernel.org/gnu/libidn/libidn2-${LIBIDN2_VERSION}.tar.gz"
     download_and_extract "${url}"
 
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
-    LDFLAGS="${LDFLAGS} --static" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    LDFLAGS="${LDFLAGS} " \
     ./configure \
         --host "${TARGET}" \
         --with-libunistring-prefix="${PREFIX}" \
@@ -524,8 +524,8 @@ compile_libpsl() {
     url="${URL}"
     download_and_extract "${url}"
 
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
-    LDFLAGS="${LDFLAGS} --static" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    LDFLAGS="${LDFLAGS} " \
       ./configure --host="${TARGET}" --prefix="${PREFIX}" \
         --enable-static --enable-shared=no --enable-builtin --disable-runtime;
 
@@ -584,7 +584,6 @@ compile_tls() {
         enable-ssl3 enable-ssl3-method \
         enable-des enable-rc4 \
         enable-weak-ssl-ciphers \
-        --static -static;
 
     make -j "$(nproc)";
     make install_sw;
@@ -603,7 +602,7 @@ compile_libssh2() {
     download_and_extract "${url}"
 
     autoreconf -fi
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
         ./configure --host="${TARGET}" --prefix="${PREFIX}" --enable-static --enable-shared=no \
             --with-crypto=openssl --with-libssl-prefix="${PREFIX}" \
             --disable-examples-build;
@@ -623,7 +622,7 @@ compile_nghttp2() {
     download_and_extract "${url}"
 
     autoreconf -i --force
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
         ./configure --host="${TARGET}" --prefix="${PREFIX}" --enable-static --enable-http3 \
             --enable-lib-only --enable-shared=no;
     make -j "$(nproc)";
@@ -646,7 +645,7 @@ compile_ngtcp2() {
     download_and_extract "${url}"
 
     autoreconf -i --force
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
         ./configure --host="${TARGET}" --prefix="${PREFIX}" --enable-static --with-openssl="${PREFIX}" \
             --with-libnghttp3="${PREFIX}" --enable-lib-only --enable-shared=no;
 
@@ -666,7 +665,7 @@ compile_nghttp3() {
     download_and_extract "${url}"
 
     autoreconf -i --force
-    PKG_CONFIG="pkg-config --static --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
+    PKG_CONFIG="pkg-config  --with-path=${PREFIX}/lib/pkgconfig:${PREFIX}/lib64/pkgconfig" \
         ./configure --host="${TARGET}" --prefix="${PREFIX}" --enable-static --enable-shared=no --enable-lib-only;
     make -j "$(nproc)";
     make install;
@@ -757,7 +756,7 @@ curl_config() {
         autoreconf -fi;
     fi
 
-    PKG_CONFIG="pkg-config --static" \
+    PKG_CONFIG="pkg-config " \
         ./configure \
             --host="${TARGET}" \
             --prefix="${PREFIX}" \
