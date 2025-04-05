@@ -17,7 +17,7 @@ jobs:
 
       - name: Cross Build Static cURL
         env:
-          ARCHES: ${{ vars.ARCHES_LINUX_GLIBC }}
+          ARCHES: "x86_64"
           CURL_VERSION: ${{ vars.CURL_VERSION }}
           TLS_LIB: ${{ vars.TLS_LIB }}
           QUICTLS_VERSION: ${{ vars.QUICTLS_VERSION }}
