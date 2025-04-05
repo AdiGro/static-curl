@@ -74,7 +74,7 @@ jobs:
 
       - name: Set up environment
         run: |
-          VERSION=`cat release/version.txt`
+          VERSION="8.13.0"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Upload artifact
@@ -105,7 +105,7 @@ jobs:
 
       - name: Set up environment
         run: |
-          VERSION=`cat release/version.txt`
+          VERSION="8.13.0"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Download artifact (linux)
