@@ -62,10 +62,6 @@ jobs:
           TOKEN_READ=${TOKEN_READ}
           sh curl-static-cross.sh
 
-      - name: Set up environment
-        run: |
-          VERSION=`cat release/version.txt`
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Upload artifact (version)
         uses: actions/upload-artifact@v4
@@ -75,6 +71,11 @@ jobs:
           retention-days: 90
           if-no-files-found: error
           overwrite: true
+
+      - name: Set up environment
+        run: |
+          VERSION=`cat release/version.txt`
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
@@ -104,7 +105,7 @@ jobs:
 
       - name: Set up environment
         run: |
-          VERSION=`cat  curl-version/version.txt`
+          VERSION=`cat release/version.txt`
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
       - name: Download artifact (linux)
