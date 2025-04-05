@@ -19,8 +19,8 @@ jobs:
         env:
           ARCHES: "x86_64"
           CURL_VERSION: ${{ vars.CURL_VERSION }}
-          TLS_LIB: ${{ vars.TLS_LIB }}
-          QUICTLS_VERSION: ${{ vars.QUICTLS_VERSION }}
+          TLS_LIB: openssl
+          QUICTLS_VERSION: 3.3.0
           OPENSSL_VERSION: ${{ vars.OPENSSL_VERSION }}
           NGTCP2_VERSION: ${{ vars.NGTCP2_VERSION }}
           NGHTTP3_VERSION: ${{ vars.NGHTTP3_VERSION }}
