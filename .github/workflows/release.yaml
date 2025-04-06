@@ -91,6 +91,7 @@ jobs:
 
       - name: Set up environment
         run: |
+          echo "8.13.0">release/version.txt
           VERSION="8.13.0"
           echo "VERSION=$VERSION" >> $GITHUB_ENV
 
